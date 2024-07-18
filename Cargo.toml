@@ -1,0 +1,31 @@
+[workspace]
+resolver = "2"
+members = [
+    "regexum-macros"
+]
+
+[workspace.package]
+repository = "https://github.com/regexum/regexum"
+edition = "2018"
+license = "MIT"
+
+[package]
+name = "regexum"
+version = "0.1.0"
+description = "Handy macros and more for regex-matched enums"
+keywords = ["enum", "regex", "string", "macros", "proc-macros"]
+license = "MIT"
+
+repository.workspace = true
+edition.workspace = true
+# rust-version.workspace = true
+# include.workspace = true
+
+[dependencies]
+lazy_static = "1.5.0"
+regex = { version = "1.10.5", features = ["perf", "unicode"] }
+regexum-macros = { path = "./regexum-macros", version = "=0.1.0", default-features = false }
+
+[features]
+default = ["std"]
+std = ["regex/std"]
